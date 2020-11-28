@@ -1,0 +1,66 @@
+# Lines starting with '#' are comments.
+# Each line is a file pattern followed by one or more owners.
+# Owners of code are automatically nominated to review PRs involving that code.
+
+# These owners will be the default owners for everything in the repo.
+*       @tleonhardt
+
+# Order is important. The last matching pattern has the most precedence.
+# So if a pull request only touches javascript files, only these owners
+# will be requested to review.
+#*.js    @octocat @github/js
+
+# You can also use email addresses if you prefer.
+#docs/*  docs@example.com
+
+# thgcmd code
+thgcmd/__init__.py           @tleonhardt @kotfu
+thgcmd/ansi.py               @kmvanbrunt @tleonhardt
+thgcmd/argparse_*.py         @kmvanbrunt @anselor
+thgcmd/clipboard.py          @tleonhardt
+thgcmd/cmd2.py               @tleonhardt @kmvanbrunt @kotfu
+thgcmd/command_definition.py @anselor
+thgcmd/constants.py          @kotfu
+thgcmd/decorators.py         @kotfu @kmvanbrunt @anselor
+thgcmd/exceptions.py         @kmvanbrunt @anselor
+thgcmd/history.py            @kotfu @tleonhardt
+thgcmd/parsing.py            @kotfu @kmvanbrunt
+thgcmd/plugin.py             @kotfu
+thgcmd/py_bridge.py          @kmvanbrunt
+thgcmd/rl_utils.py           @kmvanbrunt
+thgcmd/table_creator.py      @kmvanbrunt
+thgcmd/transcript.py         @kotfu
+thgcmd/utils.py              @tleonhardt @kotfu @kmvanbrunt
+
+# Sphinx documentation
+docs/*                  @tleonhardt @kotfu
+
+# Examples
+examples/async_printing.py  @kmvanbrunt
+examples/environment.py     @kotfu
+examples/tab_*.py           @kmvanbrunt
+examples/modular_*.py       @anselor
+examples/modular_commands/* @anselor
+
+plugins/template/*          @kotfu
+plugins/ext_test/*          @anselor
+
+# Unit Tests
+tests/pyscript/*              @kmvanbrunt
+tests/transcripts/*           @kotfu
+tests/__init__.py             @kotfu
+tests/conftest.py             @kotfu @tleonhardt
+tests/test_argparse.py        @kotfu
+tests/test_argparse_*.py      @kmvanbrunt
+tests/test_comp*.py           @kmvanbrunt
+tests/test_pars*.py           @kotfu
+tests/test_run_pyscript.py    @kmvanbrunt
+tests/test_transcript.py      @kotfu
+
+tests_isolated/test_commandset/*    @anselor
+
+# Top-level project stuff
+CONTRIBUTING.md         @tleonhardt @kotfu
+setup.py                @tleonhardt @kotfu
+tasks.py                @kotfu
+

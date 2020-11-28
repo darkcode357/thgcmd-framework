@@ -1,0 +1,38 @@
+# Python development, test, and build
+__pycache__
+build
+dist
+*.egg-info
+.eggs
+.cache
+*.pyc
+.tox
+.nox
+.pytest_cache
+
+# Code Coverage
+.coverage
+htmlcov
+junit
+
+# PyCharm
+.idea
+
+# Visual Studio Code
+.vscode
+
+# mypy optional static type checker
+.mypy_cache
+
+# mypy plugin for PyCharm
+dmypy.json
+dmypy.sock
+
+# thgcmd history file used in hello_thgcmd.py
+thgcmd_history.dat
+
+# Pipenv Lock file
+Pipfile.lock
+
+# Virtualenv directory
+.venv
