@@ -290,7 +290,7 @@ class AutoCompleter(object):
         arg_choices: Dict[str, Union[List, Tuple, Callable]] = None,
         subcmd_args_lookup: dict = None,
         tab_for_arg_help: bool = True,
-        cmd2_app=None,
+        thgcmd_app=None,
     ) -> None:
         """
         Create an AutoCompleter
@@ -301,7 +301,7 @@ class AutoCompleter(object):
         :param subcmd_args_lookup: mapping a sub-command group name to a tuple to fill the child\
         AutoCompleter's arg_choices and subcmd_args_lookup parameters
         :param tab_for_arg_help: Enable of disable argument help when there's no completion result
-        :param cmd2_app: reference to the Cmd2 application. Enables argparse argument completion with class methods
+        :param thgcmd_app: reference to the thgcmd application. Enables argparse argument completion with class methods
         """
         if not subcmd_args_lookup:
             subcmd_args_lookup = {}
@@ -312,7 +312,7 @@ class AutoCompleter(object):
         self._arg_choices = arg_choices.copy() if arg_choices is not None else {}
         self._token_start_index = token_start_index
         self._tab_for_arg_help = tab_for_arg_help
-        self._cmd2_app = cmd2_app
+        self._thgcmd_app = thgcmd_app
 
         self._flags = []  # all flags in this command
         self._flags_without_args = []  # all flags that don't take arguments
@@ -369,7 +369,7 @@ class AutoCompleter(object):
                             arg_choices=subcmd_args,
                             subcmd_args_lookup=subcmd_lookup,
                             tab_for_arg_help=tab_for_arg_help,
-                            cmd2_app=cmd2_app,
+                            thgcmd_app=thgcmd_app,
                         )
                         sub_commands.append(subcmd)
                     self._positional_completers[action.dest] = sub_completers
@@ -708,9 +708,9 @@ class AutoCompleter(object):
                 action.dest.upper(), desc_header, token_width=token_width + 2
             )
 
-            self._cmd2_app.completion_header = header
-            self._cmd2_app.display_matches = completions_with_desc
-            self._cmd2_app.matches_sorted = True
+            self._thgcmd_app.completion_header = header
+            self._thgcmd_app.display_matches = completions_with_desc
+            self._thgcmd_app.matches_sorted = True
 
         return completions
 
@@ -769,8 +769,8 @@ class AutoCompleter(object):
                     callable(arg_choices[0])
                     or (
                         isinstance(arg_choices[0], str)
-                        and hasattr(self._cmd2_app, arg_choices[0])
-                        and callable(getattr(self._cmd2_app, arg_choices[0]))
+                        and hasattr(self._thgcmd_app, arg_choices[0])
+                        and callable(getattr(self._thgcmd_app, arg_choices[0]))
                     )
                 )
             ):
@@ -778,9 +778,9 @@ class AutoCompleter(object):
                 if callable(arg_choices[0]):
                     completer = arg_choices[0]
                 elif isinstance(arg_choices[0], str) and callable(
-                    getattr(self._cmd2_app, arg_choices[0])
+                    getattr(self._thgcmd_app, arg_choices[0])
                 ):
-                    completer = getattr(self._cmd2_app, arg_choices[0])
+                    completer = getattr(self._thgcmd_app, arg_choices[0])
 
                 # extract the positional and keyword arguments from the tuple
                 list_args = None
@@ -828,7 +828,7 @@ class AutoCompleter(object):
             # application matching the string.
             if isinstance(args, str):
                 try:
-                    args = getattr(self._cmd2_app, args)
+                    args = getattr(self._thgcmd_app, args)
                 except AttributeError:
                     # Couldn't find anything matching the name
                     return []
@@ -836,9 +836,9 @@ class AutoCompleter(object):
             # is the provided argument a callable. If so, call it
             if callable(args):
                 try:
-                    if self._cmd2_app is not None:
+                    if self._thgcmd_app is not None:
                         try:
-                            args = args(self._cmd2_app)
+                            args = args(self._thgcmd_app)
                         except TypeError:
                             args = args()
                     else:

@@ -136,7 +136,7 @@ except ImportError:  # pragma: no cover
     ipython_available = False
 
 
-# optional attribute, when tagged on a function, allows cmd2 to categorize commands
+# optional attribute, when tagged on a function, allows thgcmd to categorize commands
 HELP_CATEGORY = "help_category"
 
 INTERNAL_COMMAND_EPILOG = (
@@ -198,7 +198,7 @@ def with_category(category: str) -> Callable:
 def with_argument_list(
     func: Callable[[Statement], Optional[bool]], preserve_quotes: bool = False
 ) -> Callable[[List], Optional[bool]]:
-    """A decorator to alter the arguments passed to a thg_* cmd2 method. Default passes a string of whatever the user
+    """A decorator to alter the arguments passed to a thg_* thgcmd method. Default passes a string of whatever the user
     typed. With this decorator, the decorated method will receive a list of arguments parsed from user input using
     shlex.split().
 
@@ -220,7 +220,7 @@ def with_argument_list(
 def with_argparser_and_unknown_args(
     argparser: argparse.ArgumentParser, preserve_quotes: bool = False
 ) -> Callable[[argparse.Namespace, List], Optional[bool]]:
-    """A decorator to alter a cmd2 method to populate its ``args`` argument by parsing arguments with the given
+    """A decorator to alter a thgcmd method to populate its ``args`` argument by parsing arguments with the given
     instance of argparse.ArgumentParser, but also returning unknown args as a list.
 
     :param argparser: unique instance of ArgumentParser
@@ -263,7 +263,7 @@ def with_argparser_and_unknown_args(
 def with_argparser(
     argparser: argparse.ArgumentParser, preserve_quotes: bool = False
 ) -> Callable[[argparse.Namespace], Optional[bool]]:
-    """A decorator to alter a cmd2 method to populate its ``args`` argument by parsing arguments
+    """A decorator to alter a thgcmd method to populate its ``args`` argument by parsing arguments
     with the given instance of argparse.ArgumentParser.
 
     :param argparser: unique instance of ArgumentParser
@@ -439,7 +439,7 @@ class ThgCmd(cmd.Cmd):
             except AttributeError:
                 pass
 
-        # Override whether ansi codes should be stripped from the output since cmd2 has its own logic for doing this
+        # Override whether ansi codes should be stripped from the output since thgcmd has its own logic for doing this
         colorama.init(strip=False)
 
         # initialize plugin system
@@ -603,7 +603,7 @@ class ThgCmd(cmd.Cmd):
             self.pager = "less -RXF"
             self.pager_chop = "less -SRXF"
 
-        # This boolean flag determines whether or not the cmd2 application can interact with the clipboard
+        # This boolean flag determines whether or not the thgcmd application can interact with the clipboard
         self.can_clip = can_clip
 
         # This determines if a non-zero exit code should be used when exiting the application
@@ -655,7 +655,7 @@ class ThgCmd(cmd.Cmd):
 
         Also handles BrokenPipeError exceptions for when a commands's output has
         been piped to another process and that process terminates before the
-        cmd2 command is finished executing.
+        thgcmd command is finished executing.
 
         :param msg: message to print to current stdout (anything convertible to a str with '{}'.format() is OK)
         :param end: (optional) string appended after the end of the message if not already present, default a newline
@@ -980,12 +980,12 @@ class ThgCmd(cmd.Cmd):
         as suggestions:
 
         /home/user/file.txt     /home/user/program.c
-        /home/user/maps/        /home/user/cmd2.py
+        /home/user/maps/        /home/user/thgcmd.py
 
         Instead you are shown:
 
         file.txt                program.c
-        maps/                   cmd2.py
+        maps/                   thgcmd.py
 
         For a large set of data, this can be visually more pleasing and easier to search.
 
@@ -1770,7 +1770,7 @@ class ThgCmd(cmd.Cmd):
         argparser: argparse.ArgumentParser,
     ) -> List[str]:
         """Default completion function for argparse commands."""
-        completer = AutoCompleter(argparser, cmd2_app=self)
+        completer = AutoCompleter(argparser, thgcmd_app=self)
 
         tokens, _ = self.tokens_for_completion(line, begidx, endidx)
         if not tokens:
@@ -2901,7 +2901,7 @@ class ThgCmd(cmd.Cmd):
         # Check if this is a command with an argparse function
         func = self.cmd_func(command)
         if func and hasattr(func, "argparser"):
-            completer = AutoCompleter(getattr(func, "argparser"), cmd2_app=self)
+            completer = AutoCompleter(getattr(func, "argparser"), thgcmd_app=self)
             matches = completer.complete_command_help(
                 tokens[cmd_index:], text, line, begidx, endidx
             )
@@ -2948,7 +2948,7 @@ class ThgCmd(cmd.Cmd):
             # Getting help for a specific command
             func = self.cmd_func(args.command)
             if func and hasattr(func, "argparser"):
-                completer = AutoCompleter(getattr(func, "argparser"), cmd2_app=self)
+                completer = AutoCompleter(getattr(func, "argparser"), thgcmd_app=self)
                 tokens = [args.command] + args.subcommand
                 self.poutput(completer.format_help(tokens))
             else:
@@ -3969,9 +3969,9 @@ class ThgCmd(cmd.Cmd):
         :param callargs: list of transcript test file names
         """
         import unittest
-        from .transcript import Cmd2TestCase
+        from .transcript import ThgCmdTestCase
 
-        class TestMyAppCase(Cmd2TestCase):
+        class TestMyAppCase(ThgCmdTestCase):
             cmdapp = self
 
         self.__class__.testfiles = callargs

@@ -17,7 +17,7 @@ from typing import Tuple
 from . import utils
 
 
-class Cmd2TestCase(unittest.TestCase):
+class ThgCmdTestCase(unittest.TestCase):
     """A unittest class used for transcript testing.
 
     Subclass this, setting CmdApp, to make a unittest.TestCase class

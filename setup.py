@@ -70,15 +70,12 @@ EXTRAS_REQUIRE = {
 
 setup(
     name="thgcmd",
-    use_scm_version={
-        'git_describe_command': 'git describe --dirty --tags --long --exclude plugin-*'
-    },
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     long_description_content_type='text/markdown',
     classifiers=CLASSIFIERS,
     author='darkcode0x00',
-    author_email='catherine.devlin@gmail.com',
+    author_email='darkcode0x00@gmail.com',
     url='https://github.com/darkcode0x00/thgcmd',
     license='MIT',
     platforms=['any'],

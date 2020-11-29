@@ -15,7 +15,7 @@ else:
     except AttributeError:
         DEFAULT_COMPLETER = argcomplete.completers.FilesCompleter()
 
-    from cmd2.argparse_completer import ACTION_ARG_CHOICES, ACTION_SUPPRESS_HINT
+    from thgcmd.argparse_completer import ACTION_ARG_CHOICES, ACTION_SUPPRESS_HINT
     from contextlib import redirect_stdout
     import copy
     from io import StringIO

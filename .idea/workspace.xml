@@ -2,42 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc7410c-0535-4dc8-854a-6e27d1e0e7a4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.appveyor.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.coveragerc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/thgcmd.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CODEOWNERS" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CODE_OF_CONDUCT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CONTRIBUTING.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/azure-pipelines.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exemplo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exemplo/exemplo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/argcomplete_bridge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/argparse_completer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/clipboard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/parsing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/plugin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/pyscript_bridge.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/rl_utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/thgcmd.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/transcript.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/thgcmd/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thgcmd/argcomplete_bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/argcomplete_bridge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thgcmd/argparse_completer.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/argparse_completer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thgcmd/pyscript_bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/pyscript_bridge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thgcmd/thgcmd.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/thgcmd.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thgcmd/transcript.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/transcript.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +56,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606601517497</updated>
-      <workItem from="1606601518563" duration="3030000" />
+      <workItem from="1606601518563" duration="4577000" />
+      <workItem from="1606672757418" duration="336000" />
     </task>
     <servers />
   </component>
@@ -113,6 +85,10 @@
       <screen x="0" y="26" width="1920" height="987" />
     </state>
     <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2/0.26.1920.987@0.26.1920.987" timestamp="1606605900732" />
+    <state x="569" y="127" width="827" height="782" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606609586718">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state x="569" y="127" width="827" height="782" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.26.1920.987@0.26.1920.987" timestamp="1606609586718" />
     <state x="684" y="354" width="542" height="328" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1606602508217">
       <screen x="0" y="26" width="1920" height="987" />
     </state>

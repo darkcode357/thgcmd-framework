@@ -1,6 +1,6 @@
 # coding=utf-8
 """
-Bridges calls made inside of pyscript with the Cmd2 host app while maintaining a reasonable
+Bridges calls made inside of pyscript with the thgcmd host app while maintaining a reasonable
 degree of isolation between the two
 
 Copyright 2018 Eric Lin <anselor@gmail.com>
@@ -47,10 +47,10 @@ class CommandResult(
             return not self.stderr
 
 
-def _exec_cmd(cmd2_app, command: str, echo: bool) -> CommandResult:
+def _exec_cmd(thgcmd_app, command: str, echo: bool) -> CommandResult:
     """
     Helper to encapsulate executing a command and capturing the results
-    :param cmd2_app: thgcmd app that will run the command
+    :param thgcmd_app: thgcmd app that will run the command
     :param command: command line being run
     :param echo: if True, output will be echoed to stdout/stderr while the command runs
     :return: result of the command
@@ -58,18 +58,18 @@ def _exec_cmd(cmd2_app, command: str, echo: bool) -> CommandResult:
     copy_stdout = StdSim(sys.stdout, echo)
     copy_stderr = StdSim(sys.stderr, echo)
 
-    copy_cmd_stdout = StdSim(cmd2_app.stdout, echo)
+    copy_cmd_stdout = StdSim(thgcmd_app.stdout, echo)
 
-    cmd2_app._last_result = None
+    thgcmd_app._last_result = None
 
     try:
-        cmd2_app.stdout = copy_cmd_stdout
+        thgcmd_app.stdout = copy_cmd_stdout
         with redirect_stdout(copy_stdout):
             with redirect_stderr(copy_stderr):
                 # Include a newline in case it's a multiline command
-                cmd2_app.onecmd_plus_hooks(command + "\n")
+                thgcmd_app.onecmd_plus_hooks(command + "\n")
     finally:
-        cmd2_app.stdout = copy_cmd_stdout.inner_stream
+        thgcmd_app.stdout = copy_cmd_stdout.inner_stream
 
     # if stderr is empty, set it to None
     stderr = copy_stderr.getvalue() if copy_stderr.getvalue() else None
@@ -79,7 +79,7 @@ def _exec_cmd(cmd2_app, command: str, echo: bool) -> CommandResult:
         if copy_cmd_stdout.getvalue()
         else copy_stdout.getvalue()
     )
-    result = CommandResult(stdout=outbuf, stderr=stderr, data=cmd2_app._last_result)
+    result = CommandResult(stdout=outbuf, stderr=stderr, data=thgcmd_app._last_result)
     return result
 
 
@@ -89,10 +89,10 @@ class ArgparseFunctor:
     """
 
     def __init__(
-        self, echo: bool, cmd2_app, command_name: str, parser: argparse.ArgumentParser
+        self, echo: bool, thgcmd_app, command_name: str, parser: argparse.ArgumentParser
     ):
         self._echo = echo
-        self._cmd2_app = cmd2_app
+        self._thgcmd_app = thgcmd_app
         self._command_name = command_name
         self._parser = parser
 
@@ -237,11 +237,11 @@ class ArgparseFunctor:
 
     def _run(self):
         # look up command function
-        func = self._cmd2_app.cmd_func(self._command_name)
+        func = self._thgcmd_app.cmd_func(self._command_name)
         if func is None:
             raise AttributeError(
                 "'{}' object has no command called '{}'".format(
-                    self._cmd2_app.__class__.__name__, self._command_name
+                    self._thgcmd_app.__class__.__name__, self._command_name
                 )
             )
 
@@ -356,15 +356,15 @@ class ArgparseFunctor:
                     process_action(action)
 
         traverse_parser(self._parser)
-        return _exec_cmd(self._cmd2_app, command, self._echo)
+        return _exec_cmd(self._thgcmd_app, command, self._echo)
 
 
 class PyscriptBridge(object):
     """Preserves the legacy 'cmd' interface for pyscript while also providing a new python API wrapper for
     application commands."""
 
-    def __init__(self, cmd2_app):
-        self._cmd2_app = cmd2_app
+    def __init__(self, thgcmd_app):
+        self._thgcmd_app = thgcmd_app
         self._last_result = None
         self.cmd_echo = False
 
@@ -373,13 +373,13 @@ class PyscriptBridge(object):
         Provide functionality to call application commands as a method of PyscriptBridge
         ex: app.help()
         """
-        func = self._cmd2_app.cmd_func(item)
+        func = self._thgcmd_app.cmd_func(item)
 
         if func:
             if hasattr(func, "argparser"):
                 # Command uses argparse, return an object that can traverse the argparse subcommands and arguments
                 return ArgparseFunctor(
-                    self.cmd_echo, self._cmd2_app, item, getattr(func, "argparser")
+                    self.cmd_echo, self._thgcmd_app, item, getattr(func, "argparser")
                 )
             else:
                 # Command doesn't use argparse, we will accept parameters in the form of a command string
@@ -387,20 +387,20 @@ class PyscriptBridge(object):
                     command = item
                     if args:
                         command += " " + args
-                    return _exec_cmd(self._cmd2_app, command, self.cmd_echo)
+                    return _exec_cmd(self._thgcmd_app, command, self.cmd_echo)
 
                 return wrap_func
         else:
             # item does not refer to a command
             raise AttributeError(
                 "'{}' object has no attribute '{}'".format(
-                    self._cmd2_app.pyscript_name, item
+                    self._thgcmd_app.pyscript_name, item
                 )
             )
 
     def __dir__(self):
         """Return a custom set of attribute names"""
-        attributes = self._cmd2_app.get_all_commands()
+        attributes = self._thgcmd_app.get_all_commands()
         attributes.insert(0, "cmd_echo")
         return attributes
 
@@ -415,4 +415,4 @@ class PyscriptBridge(object):
         if echo is None:
             echo = self.cmd_echo
 
-        return _exec_cmd(self._cmd2_app, command, echo)
+        return _exec_cmd(self._thgcmd_app, command, echo)
