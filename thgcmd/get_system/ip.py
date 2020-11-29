@@ -28,18 +28,14 @@ class IpInformation:
             print('{}: {}'.format(ifaceName, ', '.join(addresses)))
     def get_dict(self):
         addr_info_list  = []
-        interfaces_list = []
         for i in interfaces():
             result = ifaddresses(i)
             addr_info_list.append(result)
-        for interface in self.__list_of_interfaces:
-            interfaces_list.append(interface)
+        interfaces_list = [interface for interface in self.__list_of_interfaces]
         dictionary = dict(zip(interfaces_list, addr_info_list))
-        dictionary_dic = dict(dictionary)
-        return dictionary_dic
+        return dict(dictionary)
     def get_json(self):
-        json_object = json.dumps(self.get_dict(), indent=4)
-        return json_object
+        return json.dumps(self.get_dict(), indent=4)
 
 
 

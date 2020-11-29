@@ -450,7 +450,7 @@ class AutoCompleter(object):
                     arg_state.min = 1
                     arg_state.max = float("inf")
                     arg_state.variable = True
-                elif action.nargs == "*" or action.nargs == argparse.REMAINDER:
+                elif action.nargs in ["*", argparse.REMAINDER]:
                     arg_state.min = 0
                     arg_state.max = float("inf")
                     arg_state.variable = True
@@ -719,31 +719,29 @@ class AutoCompleter(object):
     ) -> List[str]:
         """Supports the completion of sub-commands for commands through the thgcmd help command."""
         for idx, token in enumerate(tokens):
-            if idx >= self._token_start_index:
-                if self._positional_completers:
-                    # For now argparse only allows 1 sub-command group per level
-                    # so this will only loop once.
-                    for completers in self._positional_completers.values():
-                        if token in completers:
-                            return completers[token].complete_command_help(
-                                tokens, text, line, begidx, endidx
-                            )
-                        else:
-                            return self.basic_complete(
-                                text, line, begidx, endidx, completers.keys()
-                            )
+            if idx >= self._token_start_index and self._positional_completers:
+                # For now argparse only allows 1 sub-command group per level
+                # so this will only loop once.
+                for completers in self._positional_completers.values():
+                    if token in completers:
+                        return completers[token].complete_command_help(
+                            tokens, text, line, begidx, endidx
+                        )
+                    else:
+                        return self.basic_complete(
+                            text, line, begidx, endidx, completers.keys()
+                        )
         return []
 
     def format_help(self, tokens: List[str]) -> str:
         """Supports the completion of sub-commands for commands through the thgcmd help command."""
         for idx, token in enumerate(tokens):
-            if idx >= self._token_start_index:
-                if self._positional_completers:
-                    # For now argparse only allows 1 sub-command group per level
-                    # so this will only loop once.
-                    for completers in self._positional_completers.values():
-                        if token in completers:
-                            return completers[token].format_help(tokens)
+            if idx >= self._token_start_index and self._positional_completers:
+                # For now argparse only allows 1 sub-command group per level
+                # so this will only loop once.
+                for completers in self._positional_completers.values():
+                    if token in completers:
+                        return completers[token].format_help(tokens)
         return self._parser.format_help()
 
     def _complete_for_arg(
@@ -763,51 +761,15 @@ class AutoCompleter(object):
             # To do this, we make sure the first element is either a callable
             #   or it's the name of a callable in the application
             if (
-                isinstance(arg_choices, tuple)
-                and len(arg_choices) > 0
+                not isinstance(arg_choices, tuple)
+                or len(arg_choices) <= 0
+                or not callable(arg_choices[0])
                 and (
-                    callable(arg_choices[0])
-                    or (
-                        isinstance(arg_choices[0], str)
-                        and hasattr(self._thgcmd_app, arg_choices[0])
-                        and callable(getattr(self._thgcmd_app, arg_choices[0]))
-                    )
+                    not isinstance(arg_choices[0], str)
+                    or not hasattr(self._thgcmd_app, arg_choices[0])
+                    or not callable(getattr(self._thgcmd_app, arg_choices[0]))
                 )
             ):
-
-                if callable(arg_choices[0]):
-                    completer = arg_choices[0]
-                elif isinstance(arg_choices[0], str) and callable(
-                    getattr(self._thgcmd_app, arg_choices[0])
-                ):
-                    completer = getattr(self._thgcmd_app, arg_choices[0])
-
-                # extract the positional and keyword arguments from the tuple
-                list_args = None
-                kw_args = None
-                for index in range(1, len(arg_choices)):
-                    if isinstance(arg_choices[index], list) or isinstance(
-                        arg_choices[index], tuple
-                    ):
-                        list_args = arg_choices[index]
-                    elif isinstance(arg_choices[index], dict):
-                        kw_args = arg_choices[index]
-                try:
-                    # call the provided function differently depending on the provided positional and keyword arguments
-                    if list_args is not None and kw_args is not None:
-                        return completer(
-                            text, line, begidx, endidx, *list_args, **kw_args
-                        )
-                    elif list_args is not None:
-                        return completer(text, line, begidx, endidx, *list_args)
-                    elif kw_args is not None:
-                        return completer(text, line, begidx, endidx, **kw_args)
-                    else:
-                        return completer(text, line, begidx, endidx)
-                except TypeError:
-                    # assume this is due to an incorrect function signature, return nothing.
-                    return []
-            else:
                 return AutoCompleter.basic_complete(
                     text,
                     line,
@@ -816,6 +778,34 @@ class AutoCompleter(object):
                     self._resolve_choices_for_arg(action, used_values),
                 )
 
+            if callable(arg_choices[0]):
+                completer = arg_choices[0]
+            else:
+                completer = getattr(self._thgcmd_app, arg_choices[0])
+
+            # extract the positional and keyword arguments from the tuple
+            list_args = None
+            kw_args = None
+            for index in range(1, len(arg_choices)):
+                if isinstance(arg_choices[index], (list, tuple)):
+                    list_args = arg_choices[index]
+                elif isinstance(arg_choices[index], dict):
+                    kw_args = arg_choices[index]
+            try:
+                # call the provided function differently depending on the provided positional and keyword arguments
+                if list_args is not None and kw_args is not None:
+                    return completer(
+                        text, line, begidx, endidx, *list_args, **kw_args
+                    )
+                elif list_args is not None:
+                    return completer(text, line, begidx, endidx, *list_args)
+                elif kw_args is not None:
+                    return completer(text, line, begidx, endidx, **kw_args)
+                else:
+                    return completer(text, line, begidx, endidx)
+            except TypeError:
+                # assume this is due to an incorrect function signature, return nothing.
+                return []
         return []
 
     def _resolve_choices_for_arg(
@@ -854,7 +844,7 @@ class AutoCompleter(object):
                 # filter out arguments we already used
                 args = [arg for arg in args if arg not in used_values]
 
-                if len(args) > 0:
+                if args:
                     return args
 
         return []
@@ -886,23 +876,19 @@ class AutoCompleter(object):
             else:
                 prefix = ""
 
-        if action.help is None:
-            help_text = ""
-        else:
-            help_text = action.help
-
+        help_text = "" if action.help is None else action.help
         # is there anything to print for this parameter?
         if not prefix and not help_text:
             return
 
         prefix = "  {0: <{width}}    ".format(prefix, width=20)
-        pref_len = len(prefix)
         help_lines = help_text.splitlines()
 
         if len(help_lines) == 1:
             print("\nHint:\n{}{}\n".format(prefix, help_lines[0]))
         else:
             out_str = "\n{}".format(prefix)
+            pref_len = len(prefix)
             out_str += "\n{0: <{width}}".format("", width=pref_len).join(help_lines)
             print("\nHint:" + out_str + "\n")
 
@@ -1000,10 +986,7 @@ class ACHelpFormatter(argparse.RawTextHelpFormatter):
                 def get_lines(parts, indent, prefix=None):
                     lines = []
                     line = []
-                    if prefix is not None:
-                        line_len = len(prefix) - 1
-                    else:
-                        line_len = len(indent) - 1
+                    line_len = len(prefix) - 1 if prefix is not None else len(indent) - 1
                     for part in parts:
                         if line_len + 1 + len(part) > text_width and line:
                             lines.append(indent + " ".join(line))
@@ -1160,15 +1143,12 @@ class ACArgumentParser(argparse.ArgumentParser):
             self._custom_error_message = ""
 
         lines = message.split("\n")
-        linum = 0
         formatted_message = ""
-        for line in lines:
+        for linum, line in enumerate(lines):
             if linum == 0:
                 formatted_message = "Error: " + line
             else:
                 formatted_message += "\n       " + line
-            linum += 1
-
         sys.stderr.write(
             Fore.LIGHTRED_EX + "{}\n\n".format(formatted_message) + Fore.RESET
         )
@@ -1210,13 +1190,11 @@ class ACArgumentParser(argparse.ArgumentParser):
                 formatter.start_section(action_group.title)
                 formatter.add_text(action_group.description)
                 formatter.add_arguments(opt_args)
-                formatter.end_section()
             else:
                 formatter.start_section(action_group.title)
                 formatter.add_text(action_group.description)
                 formatter.add_arguments(action_group._group_actions)
-                formatter.end_section()
-
+            formatter.end_section()
         # End thgcmd customization
 
         # epilog
@@ -1249,18 +1227,17 @@ class ACArgumentParser(argparse.ArgumentParser):
         match = _re.match(nargs_pattern, arg_strings_pattern)
 
         # raise an exception if we weren't able to find a match
-        if match is None:
-            if (
-                isinstance(action, _RangeAction)
-                and action.nargs_min is not None
-                and action.nargs_max is not None
-            ):
-                raise ArgumentError(
-                    action,
-                    "Expected between {} and {} arguments".format(
-                        action.nargs_min, action.nargs_max
-                    ),
-                )
+        if match is None and (
+            isinstance(action, _RangeAction)
+            and action.nargs_min is not None
+            and action.nargs_max is not None
+        ):
+            raise ArgumentError(
+                action,
+                "Expected between {} and {} arguments".format(
+                    action.nargs_min, action.nargs_max
+                ),
+            )
 
         return super(ACArgumentParser, self)._match_argument(
             action, arg_strings_pattern
