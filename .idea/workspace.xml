@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5fc7410c-0535-4dc8-854a-6e27d1e0e7a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thgcmd/argcomplete_bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/argcomplete_bridge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thgcmd/argparse_completer.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/argparse_completer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thgcmd/pyscript_bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/pyscript_bridge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thgcmd/thgcmd.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/thgcmd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/thgcmd/transcript.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/transcript.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thgcmd/ansi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +51,16 @@
       <option name="presentableId" value="Default" />
       <updated>1606601517497</updated>
       <workItem from="1606601518563" duration="4577000" />
-      <workItem from="1606672757418" duration="336000" />
+      <workItem from="1606672757418" duration="669000" />
     </task>
+    <task id="LOCAL-00001" summary="refatoração">
+      <created>1606673261842</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606673261842</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -66,7 +68,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="refatoração" />
+    <option name="LAST_COMMIT_MESSAGE" value="refatoração" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="322" width="574" height="393" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606602955029">
@@ -77,14 +80,14 @@
       <screen x="0" y="26" width="1920" height="987" />
     </state>
     <state x="692" y="268" width="526" height="501" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.26.1920.987@0.26.1920.987" timestamp="1606603204301" />
-    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2" timestamp="1606605809907">
+    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2" timestamp="1606673261692">
       <screen x="0" y="26" width="1920" height="987" />
     </state>
-    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2/0.26.1920.987@0.26.1920.987" timestamp="1606605809907" />
-    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606605900732">
+    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2/0.26.1920.987@0.26.1920.987" timestamp="1606673261692" />
+    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606673265701">
       <screen x="0" y="26" width="1920" height="987" />
     </state>
-    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2/0.26.1920.987@0.26.1920.987" timestamp="1606605900732" />
+    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2/0.26.1920.987@0.26.1920.987" timestamp="1606673265701" />
     <state x="569" y="127" width="827" height="782" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606609586718">
       <screen x="0" y="26" width="1920" height="987" />
     </state>
