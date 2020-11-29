@@ -374,3 +374,4 @@ def unquote_redirection_tokens(args: List[str]) -> None:
         unquoted_arg = strip_quotes(arg)
         if unquoted_arg in constants.REDIRECTION_TOKENS:
             args[i] = unquoted_arg
+

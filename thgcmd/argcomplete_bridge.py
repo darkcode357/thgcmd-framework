@@ -1,5 +1,6 @@
 """Hijack the ArgComplete's bash completion handler to return AutoCompleter results"""
 
+
 try:
     # check if argcomplete is installed
     import argcomplete

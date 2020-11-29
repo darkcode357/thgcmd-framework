@@ -35,6 +35,7 @@ else:
 def get_paste_buffer() -> str:
     """Get the contents of the clipboard / paste buffer.
 
+
     :return: contents of the clipboard
     """
     pb_str = pyperclip.paste()

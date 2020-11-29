@@ -5,6 +5,7 @@ Imports the proper readline for the platform and provides utility functions for 
 from enum import Enum
 import sys
 
+
 # Prefer statically linked gnureadline if available (for macOS compatibility due to issues with libedit)
 try:
     import gnureadline as readline

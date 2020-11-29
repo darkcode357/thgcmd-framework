@@ -27,6 +27,7 @@ class ThgCmdTestCase(unittest.TestCase):
     See example.py
     """
 
+
     cmdapp = None
 
     def fetchTranscripts(self):

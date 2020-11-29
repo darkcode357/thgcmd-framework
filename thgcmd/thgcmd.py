@@ -51,6 +51,7 @@ from .argparse_completer import AutoCompleter, ACArgumentParser, ACTION_ARG_CHOI
 from .clipboard import can_clip, get_paste_buffer, write_to_paste_buffer
 from .parsing import StatementParser, Statement, Macro, MacroArg
 
+
 # Set up readline
 from .rl_utils import (
     rl_type,

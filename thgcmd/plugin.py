@@ -4,6 +4,7 @@
 import attr
 
 
+
 @attr.s
 class PostparsingData:
     stop = attr.ib()

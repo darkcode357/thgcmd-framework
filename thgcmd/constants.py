@@ -4,6 +4,7 @@
 
 import re
 
+
 # Used for command parsing, output redirection, tab completion and word
 # breaks. Do not change.
 QUOTES = ['"', "'"]
