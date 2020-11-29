@@ -72,7 +72,6 @@ from argparse import (
     ZERO_OR_MORE,
     ONE_OR_MORE,
     ArgumentError,
-    _,
     _get_action_name,
     SUPPRESS,
 )

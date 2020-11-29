@@ -19,7 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fc7410c-0535-4dc8-854a-6e27d1e0e7a4" name="Default Changelist" comment="" />
+    <list default="true" id="5fc7410c-0535-4dc8-854a-6e27d1e0e7a4" name="Default Changelist" comment="reset">
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thgcmd/get_system/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thgcmd/get_system/ip.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thgcmd/get_system/teste/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/thgcmd/get_system/teste/teste.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/thgcmd/argparse_completer.py" beforeDir="false" afterPath="$PROJECT_DIR$/thgcmd/argparse_completer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,8 +41,14 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="JupyterTrust" id="f45d6656-e07c-4c12-b5fb-6eace420fbbb" />
   <component name="ProjectId" id="1kwAwKGuFwmURF0DhadE6TILCHs" />
@@ -46,7 +60,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../thg-framework" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -59,6 +73,77 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
+  <component name="RunManager" selected="Python.teste">
+    <configuration name="ip" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="thgcmd" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/thgcmd/get_system" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/thgcmd/get_system/ip.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="teste" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="thgcmd" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/thgcmd/get_system/teste" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/thgcmd/get_system/teste/teste.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctests in IpInformation" type="tests" factoryName="Doctests" nameIsGenerated="true">
+      <module name="thgcmd" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/thgcmd/get_system" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/thgcmd/get_system/ip.py" />
+      <option name="CLASS_NAME" value="IpInformation" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_CLASS" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.teste" />
+        <item itemvalue="Python.ip" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,6 +155,14 @@
       <workItem from="1606601518563" duration="4577000" />
       <workItem from="1606672757418" duration="336000" />
     </task>
+    <task id="LOCAL-00001" summary="reset">
+      <created>1606675991507</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1606675991507</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,7 +181,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="reset" />
+    <option name="LAST_COMMIT_MESSAGE" value="reset" />
   </component>
   <component name="WindowStateProjectService">
     <state x="668" y="322" width="574" height="393" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606602955029">
@@ -99,14 +193,38 @@
       <screen x="0" y="26" width="1920" height="987" />
     </state>
     <state x="692" y="268" width="526" height="501" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.26.1920.987@0.26.1920.987" timestamp="1606603204301" />
-    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2" timestamp="1606605809907">
+    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2" timestamp="1606676065161">
       <screen x="0" y="26" width="1920" height="987" />
     </state>
-    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2/0.26.1920.987@0.26.1920.987" timestamp="1606605809907" />
-    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606605900732">
+    <state x="553" y="78" width="804" height="880" key="CommitChangelistDialog2/0.26.1920.987@0.26.1920.987" timestamp="1606676065161" />
+    <state x="742" y="276" width="426" height="484" key="FileChooserDialogImpl" timestamp="1606685771276">
       <screen x="0" y="26" width="1920" height="987" />
     </state>
-    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2/0.26.1920.987@0.26.1920.987" timestamp="1606605900732" />
+    <state x="742" y="276" width="426" height="484" key="FileChooserDialogImpl/0.26.1920.987@0.26.1920.987" timestamp="1606685771276" />
+    <state width="1876" height="239" key="GridCell.Tab.0.bottom" timestamp="1606685173679">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state width="1876" height="239" key="GridCell.Tab.0.bottom/0.26.1920.987@0.26.1920.987" timestamp="1606685173679" />
+    <state width="1876" height="239" key="GridCell.Tab.0.center" timestamp="1606685173678">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state width="1876" height="239" key="GridCell.Tab.0.center/0.26.1920.987@0.26.1920.987" timestamp="1606685173678" />
+    <state width="1876" height="239" key="GridCell.Tab.0.left" timestamp="1606685173677">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state width="1876" height="239" key="GridCell.Tab.0.left/0.26.1920.987@0.26.1920.987" timestamp="1606685173677" />
+    <state width="1876" height="239" key="GridCell.Tab.0.right" timestamp="1606685173679">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state width="1876" height="239" key="GridCell.Tab.0.right/0.26.1920.987@0.26.1920.987" timestamp="1606685173679" />
+    <state x="596" y="278" width="717" height="481" key="MultipleFileMergeDialog" timestamp="1606676005426">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state x="596" y="278" width="717" height="481" key="MultipleFileMergeDialog/0.26.1920.987@0.26.1920.987" timestamp="1606676005426" />
+    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2" timestamp="1606675993099">
+      <screen x="0" y="26" width="1920" height="987" />
+    </state>
+    <state x="554" y="254" width="802" height="528" key="Vcs.Push.Dialog.v2/0.26.1920.987@0.26.1920.987" timestamp="1606675993099" />
     <state x="569" y="127" width="827" height="782" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1606609586718">
       <screen x="0" y="26" width="1920" height="987" />
     </state>
@@ -117,6 +235,9 @@
     <state x="684" y="354" width="542" height="328" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.26.1920.987@0.26.1920.987" timestamp="1606602508217" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/thgcmd$teste.coverage" NAME="teste Coverage Results" MODIFIED="1606685173666" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/thgcmd/get_system/teste" />
+    <SUITE FILE_PATH="coverage/thgcmd$Doctests_in_IpInformation.coverage" NAME="Doctests in IpInformation Coverage Results" MODIFIED="1606684538394" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/thgcmd/get_system" />
+    <SUITE FILE_PATH="coverage/thgcmd$ip.coverage" NAME="ip Coverage Results" MODIFIED="1606682859813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/thgcmd/get_system" />
     <SUITE FILE_PATH="coverage/thgcmd$Doctest_with_argument_list.coverage" NAME="Doctest with_argument_list Coverage Results" MODIFIED="1606674756138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/thgcmd" />
   </component>
 </project>

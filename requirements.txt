@@ -1,0 +1,13 @@
+colorama~=0.4.4
+typing~=3.7.4.3
+wcwidth~=0.1.7
+attrs~=19.1.0
+argparse~=1.4.0
+contextlib2~=0.6.0.post1
+ipython~=7.17.0
+netifaces~=0.10.4
+thgcmd~=0.0.0
+gnureadline~=8.0.0
+pyperclip~=1.7.0
+argcomplete~=1.11.1
+setuptools~=50.3.0
